@@ -1,0 +1,46 @@
+/* MediFlow UI — standalone design-system stylesheet.
+   Compiled by the Tailwind CLI into dist/styles.css; carries the oklch design
+   tokens, the brand fonts (remote), the scan keyframe, and every utility class
+   the library components use. This is the sheet the design bundle ships. */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+/* Scan the compiled component sources so their utilities are generated. */
+@source "./**/*.{ts,tsx}";
+
+@theme {
+  --color-bg: oklch(0.976 0.012 78);
+  --color-bg-2: oklch(0.962 0.016 72);
+  --color-surface: oklch(0.995 0.006 90);
+  --color-ink: oklch(0.27 0.018 50);
+  --color-ink-soft: oklch(0.46 0.022 52);
+  --color-line: oklch(0.88 0.014 70);
+  --color-clay: oklch(0.63 0.132 42);
+  --color-clay-deep: oklch(0.5 0.12 40);
+  --color-sage: oklch(0.63 0.07 152);
+
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+
+  --animate-scan: scan 2.6s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0%,
+  100% {
+    top: 12%;
+  }
+  50% {
+    top: 84%;
+  }
+}
+
+/* Base look so components inherit the brand type + warm ground when a design
+   drops them onto a bare page. */
+:where(body) {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
